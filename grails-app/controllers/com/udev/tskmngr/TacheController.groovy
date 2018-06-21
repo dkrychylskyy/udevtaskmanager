@@ -9,10 +9,25 @@ class TacheController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def findTaskByUser(){
+        User user = session.user
+
+        List <Tache> tacheList = Tache.findAllWhere(user: session.user)
+
+        return tacheList
+    }
+
+
+
     def index(Integer max) {
+
+        def listDeTache = findTaskByUser()
+        flash.listDeTache = findTaskByUser()
+        //render listDeTache
+
         params.max = Math.min(max ?: 10, 100)
         respond tacheService.list(params), model:[tacheCount: tacheService.count()]
-    }
+     }
 
     def show(Long id) {
         respond tacheService.get(id)

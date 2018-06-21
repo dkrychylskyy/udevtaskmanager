@@ -16,5 +16,7 @@
 </g:form>
 ${flash.message}
 
+
+<a class="home" href="${createLink(uri: '/user/create')}"><g:message code="default.create.label"/></a>
 </body>
 </html>
