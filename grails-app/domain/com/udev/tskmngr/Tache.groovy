@@ -8,11 +8,18 @@ class Tache {
     Date dateFin
     int id
     int duree
+    /**
+     * TODO
+     * delete label
+     */
     String label
 
     static belongsTo = [user : User]
     static hasOne = [status : Status]
 
     static constraints = {
+        desc nullable: false
+        label blank: true
+
     }
 }

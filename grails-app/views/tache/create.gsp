@@ -35,7 +35,17 @@
             </g:hasErrors>
             <g:form resource="${this.tache}" method="POST">
                 <fieldset class="form">
-                    <f:all bean="tache"/>
+                    <f:field property="titre" bean="tache"/>
+                    <div id="dateDebut">
+                        <f:field property="dateDebut" bean="tache"/>
+                    </div>
+                    <div id="dateFin">
+                        <f:field property="dateFin" bean="tache"/>
+                    </div>
+                    <f:field property="duree" bean="tache" value="" required="false" label="Duree jour(s)"/>
+                    <p class="bg-danger" hidden id="errorDuree"><g:message code="error.duree"/></p>
+
+                    <f:field property="desc" bean="tache" required="false"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
