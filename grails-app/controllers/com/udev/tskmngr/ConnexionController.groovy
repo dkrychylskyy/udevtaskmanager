@@ -16,15 +16,11 @@ class ConnexionController {
             session.user = u
             render session.user
             redirect(controller: "tache", action: "index")
-            //u.email = params.email
-            //u.mdp = params.mdp
         } else {
             flash.message = "login failed"
             redirect(action: "index")
 
-            //render(view:"index")
         }
-        //render u.email
 
 
     }
