@@ -27,8 +27,14 @@ class TacheController {
             notFound()
             return
         }
-
         try {
+            if (tache.getDesc()== null){
+                tache.setDesc("")
+            }
+            tache.setUser(session.user)
+            tache.setDateCreation(new Date())
+            tache.setStatus(Status.NON_COMMENCE)
+            tache.setLabel("")
             tacheService.save(tache)
         } catch (ValidationException e) {
             respond tache.errors, view:'create'
