@@ -8,6 +8,8 @@ class Tache {
     Date dateFin
     int id
     int duree
+    String label
+
     static belongsTo = [user : User]
     static hasOne = [status : Status]
 
