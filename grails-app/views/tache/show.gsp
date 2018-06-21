@@ -14,6 +14,14 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+    <g:if test="${session.user}">
+        <div class="nav" role="navigation">
+            <ul>
+
+                <li>Login as : ${session.user.prenom} | <g:link controller="connexion" action="logout">Logout</g:link></li>
+            </ul>
+        </div>
+    </g:if>
         <div id="show-tache" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
