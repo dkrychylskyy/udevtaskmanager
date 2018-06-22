@@ -58,6 +58,8 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    compile group: 'org.json', name: 'json', version: '20180130'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }
 
 bootRun {

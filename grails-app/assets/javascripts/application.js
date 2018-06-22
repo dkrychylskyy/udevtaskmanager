@@ -110,6 +110,6 @@ if (typeof jQuery !== 'undefined') {
         $("#dateFin_day").val(day);
         $("#dateFin_month").val(month);
         $("#dateFin_year").val(year);
-        newDateFin = newDateFinEntier.getFullYear()+"-"+(month)+"-"+(day) ;
+
     }
 }

@@ -24,7 +24,6 @@ class TacheController {
         def listDeTache = findTaskByUser()
         flash.listDeTache = findTaskByUser()
         //render listDeTache
-
         params.max = Math.min(max ?: 10, 100)
         respond tacheService.list(params), model:[tacheCount: tacheService.count()]
      }
