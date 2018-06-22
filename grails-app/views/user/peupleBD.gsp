@@ -12,11 +12,22 @@
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
     </ul>
 </div>
-<p>On a ajouté dans BD le <span class="badge"> ${count }</span> utilisateurs</p>
-<ul>
-    <g:each in="${userList}">
-        <li><samp>${it.nom} |</samp><samp>${it.prenom} |</samp><samp>${it.email} </samp></li>
-    </g:each>
-</ul>
+    <p>On a ajouté dans BD le <span class="badge" style="background-color: #5bc0de"> ${count }</span> utilisateurs</p>
+    <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Mot de passe provisoir</th>
+        </tr>
+        <g:each in="${userList}">
+            <tr>
+                <td>${it.nom}</td>
+                <td>${it.prenom}</td>
+                <td>${it.email}</td>
+                <td>1111</td>
+            </tr>
+        </g:each>
+    </table>
 
 </body>
