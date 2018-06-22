@@ -26,16 +26,6 @@ public class JSONParsing {
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:\\TMPdata\\UsersAndTaches.json"));
             List<User> userList = new Gson().fromJson(br,new TypeToken<List<User>>() {}.getType());
-
-//            for (User user : userList){
-//                try {
-//                    Set<Tache> taches = user.getTaches();
-//
-//                    //System.out.println(user.getEmail()+" est sauvgardé !");
-//                } catch (Exception e) {
-//                    System.out.println(e.getMessage());
-//                }
-//            }
             return userList;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
