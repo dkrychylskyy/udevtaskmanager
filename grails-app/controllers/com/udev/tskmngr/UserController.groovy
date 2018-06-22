@@ -1,7 +1,6 @@
 package com.udev.tskmngr
 
 import grails.validation.ValidationException
-import grails.web.servlet.mvc.GrailsParameterMap
 import org.springframework.web.servlet.ModelAndView
 
 import static org.springframework.http.HttpStatus.*
@@ -9,6 +8,7 @@ import static org.springframework.http.HttpStatus.*
 class UserController {
 
     UserService userService
+    CreationDatesService creationDatesService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -115,11 +115,24 @@ class UserController {
 
                 Set<Tache> taches = usr.getTaches()
                 Iterator iterator = taches.iterator()
+            def newUser = new User(nom:nom, prenom: prenom, mdp: "1111", email: email).save(failOnError: true)
+                while (iterator.hasNext()){
+                    StringBuffer sb = new StringBuffer(iterator.next().getDesc())
+                    String desc = sb.delete(0,250)
+                    def newTache = new Tache(
+                            titre: iterator.next().getTitre(),
+                            desc: desc,
+                            dateDebut: iterator.next().getDateDebut(),
+                            dateFin: iterator.next().getDateFin(),
+                            user: newUser,
+                            status: Status.NON_COMMENCE,
+                            dateCreation: new Date(),
+                            label: "test"
+                    ).save(failOnError: true)
+                }
 
-                def newUser = new User(nom:nom, prenom: prenom, mdp: "1234", email: email).save(failOnError: true)
+                //def newTache = new Tache(titre:"test", desc:"test", dateCreation: new Date(), dateDebut: new Date(), dateFin: new Date(), status: Status.NON_COMMENCE, label: "test", user: newUser).save(failOnError: true)
 
-                //render "Succes ! "+usr.getEmail()
-//                render ('<a class="home" href="${createLink(uri: \'/\')}"><g:message code="default.home.label"/></a>')
             }
 
         return new ModelAndView("/user/peupleBD", [userList: userList, count: count])

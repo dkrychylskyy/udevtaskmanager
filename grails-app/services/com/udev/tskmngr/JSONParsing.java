@@ -24,7 +24,7 @@ public class JSONParsing {
         Gson gson = new Gson();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("c:\\TMPdata\\UsersAndTaches.json"));
+            BufferedReader br = new BufferedReader(new FileReader("c:\\TMPdata\\data2.json"));
             List<User> userList = new Gson().fromJson(br,new TypeToken<List<User>>() {}.getType());
             return userList;
         } catch (FileNotFoundException e) {
