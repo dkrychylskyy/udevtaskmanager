@@ -1,6 +1,8 @@
 package com.udev.tskmngr
 
 import grails.validation.ValidationException
+import grails.web.servlet.mvc.GrailsParameterMap
+
 import static org.springframework.http.HttpStatus.*
 
 class UserController {
@@ -96,4 +98,19 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def creerUtilisateurs(){
+        List<User> userList
+        JSONParsing jsonParsing = new JSONParsing()
+        userList = jsonParsing.parserJsonFichier()
+            for (User usr : userList){
+                String nom = usr.getNom()
+                String prenom = usr.getPrenom()
+                String email = usr.getEmail()
+                String mdp = usr.getMdp()
+                def newUser = new User(nom:nom, prenom: prenom, mdp: "1234", email: email).save(failOnError: true)
+                render "Succes ! "+usr.getEmail()
+            }
+    }
+
 }
